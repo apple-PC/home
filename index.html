@@ -5,63 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>apple-PC · 导航</title>
 <style>
-  :root{
-    --bg1:#0f1020; --bg2:#1a1430; --card:rgba(255,255,255,.06);
-    --card-hover:rgba(255,255,255,.12); --txt:#e8e8f0; --sub:#9a9ab0;
-    --accent:#7c5cff; --accent2:#36d1dc;
-  }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-    min-height:100vh; color:var(--txt);
-    background:radial-gradient(1200px 600px at 20% -10%,#2a1f5a 0%,transparent 60%),
-               radial-gradient(1000px 500px at 100% 0%,#0c3a4a 0%,transparent 55%),
-               linear-gradient(160deg,var(--bg1),var(--bg2));
-    padding:48px 20px 60px;
-  }
-  .wrap{max-width:1080px;margin:0 auto;}
-  header{text-align:center;margin-bottom:46px;}
-  header h1{
-    font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:.5px;
-    background:linear-gradient(90deg,var(--accent),var(--accent2));
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-  }
-  header p{color:var(--sub);margin-top:10px;font-size:15px;}
-  .grid{
-    display:grid;gap:18px;
-    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-  }
-  a.card{
-    display:block;text-decoration:none;color:inherit;
-    background:var(--card);border:1px solid rgba(255,255,255,.08);
-    border-radius:18px;padding:22px;backdrop-filter:blur(10px);
-    transition:transform .18s ease,background .18s ease,border-color .18s ease;
-  }
-  a.card:hover{
-    transform:translateY(-4px);background:var(--card-hover);
-    border-color:rgba(124,92,255,.5);
-    box-shadow:0 12px 30px rgba(124,92,255,.18);
-  }
-  .ico{font-size:34px;line-height:1;margin-bottom:12px;}
-  .name{font-size:18px;font-weight:700;margin-bottom:6px;}
-  .desc{color:var(--sub);font-size:13.5px;line-height:1.5;min-height:40px;}
-  .tag{
-    display:inline-block;margin-top:12px;font-size:11px;padding:3px 9px;
-    border-radius:999px;background:rgba(124,92,255,.18);color:#c7bcff;
-  }
-  .tag.code{background:rgba(54,209,220,.16);color:#9fe9f0;}
-  footer{text-align:center;color:var(--sub);font-size:13px;margin-top:48px;}
-  footer a{color:var(--accent2);text-decoration:none;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f7;color:#1d1d1f;padding:40px 20px;line-height:1.5;}
+  .wrap{max-width:960px;margin:0 auto;}
+  header{text-align:center;margin-bottom:36px;}
+  header h1{font-size:30px;font-weight:700;}
+  header p{color:#6e6e73;margin-top:8px;font-size:15px;}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
+  a.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid #e0e0e5;border-radius:10px;padding:18px;transition:border-color .15s,box-shadow .15s;}
+  a.card:hover{border-color:#0071e3;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+  .ico{font-size:28px;margin-bottom:8px;}
+  .name{font-size:16px;font-weight:600;}
+  .desc{color:#6e6e73;font-size:13px;margin-top:4px;}
+  .tag{display:inline-block;margin-top:10px;font-size:11px;padding:2px 8px;border-radius:6px;background:#f0f0f3;color:#6e6e73;}
+  .tag.code{background:#e8f0fe;color:#1a73e8;}
+  details{margin-top:28px;}
+  summary{cursor:pointer;font-size:16px;font-weight:600;color:#1d1d1f;list-style:none;padding:10px 0;border-top:1px solid #e0e0e5;user-select:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary::before{content:"▸ ";color:#6e6e73;}
+  details[open] summary::before{content:"▾ ";}
+  footer{text-align:center;color:#8e8e93;font-size:13px;margin-top:40px;}
+  footer a{color:#0071e3;text-decoration:none;}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
     <h1>apple-PC · 导航</h1>
-    <p>梓涵做的小网站与项目，点开即玩 🐾</p>
+    <p>由apple-pc（天天向上）制作</p>
   </header>
-  <div class="grid">
 
+  <div class="grid">
     <a class="card" href="https://apple-pc.github.io/audio-visualizer/" target="_blank" rel="noopener">
       <div class="ico">🎵</div>
       <div class="name">audio-visualizer</div>
@@ -100,14 +74,7 @@
     <a class="card" href="https://apple-pc.github.io/multi-timer/" target="_blank" rel="noopener">
       <div class="ico">⏱️</div>
       <div class="name">multi-timer</div>
-      <div class="desc">多功能计时器：时间 / 秒表 / 计时器，液态玻璃主题。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/pause-helper/" target="_blank" rel="noopener">
-      <div class="ico">🛑</div>
-      <div class="name">pause-helper</div>
-      <div class="desc">15 分钟延迟助手，帮你打断冲动。</div>
+      <div class="desc">多功能计时器：时间 / 秒表 / 计时器。</div>
       <span class="tag">网站</span>
     </a>
 
@@ -117,18 +84,28 @@
       <div class="desc">CSP-S 复赛模拟器，含 4 套模拟卷与本地评测。</div>
       <span class="tag code">代码仓库</span>
     </a>
-
-    <a class="card" href="https://github.com/apple-PC/Wos" target="_blank" rel="noopener">
-      <div class="ico">🟡</div>
-      <div class="name">Wos</div>
-      <div class="desc">波兰球游戏。</div>
-      <span class="tag code">代码仓库</span>
-    </a>
-
   </div>
-  <footer>
-    由 WorkBuddy 爪爪生成 · 源码见 <a href="https://github.com/apple-PC/home" target="_blank" rel="noopener">github.com/apple-PC/home</a>
-  </footer>
+
+  <details>
+    <summary>更多</summary>
+    <div class="grid" style="margin-top:14px;">
+      <a class="card" href="https://apple-pc.github.io/pause-helper/" target="_blank" rel="noopener">
+        <div class="ico">🛑</div>
+        <div class="name">pause-helper</div>
+        <div class="desc">15 分钟延迟助手，帮你打断冲动。</div>
+        <span class="tag">网站</span>
+      </a>
+
+      <a class="card" href="https://github.com/apple-PC/Wos" target="_blank" rel="noopener">
+        <div class="ico">🟡</div>
+        <div class="name">Wos</div>
+        <div class="desc">波兰球游戏。</div>
+        <span class="tag code">代码仓库</span>
+      </a>
+    </div>
+  </details>
+
+  <footer>源码 · <a href="https://github.com/apple-PC/home" target="_blank" rel="noopener">github.com/apple-PC/home</a></footer>
 </div>
 </body>
 </html>
