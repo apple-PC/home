@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>apple-PC · 导航</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0;}
@@ -19,11 +19,13 @@
   .desc{color:#6e6e73;font-size:13px;margin-top:4px;}
   .tag{display:inline-block;margin-top:10px;font-size:11px;padding:2px 8px;border-radius:6px;background:#f0f0f3;color:#6e6e73;}
   .tag.code{background:#e8f0fe;color:#1a73e8;}
-  details{margin-top:28px;}
-  summary{cursor:pointer;font-size:16px;font-weight:600;color:#1d1d1f;list-style:none;padding:10px 0;border-top:1px solid #e0e0e5;user-select:none;}
-  summary::-webkit-details-marker{display:none;}
-  summary::before{content:"▸ ";color:#6e6e73;}
-  details[open] summary::before{content:"▾ ";}
+  .more{margin-top:28px;}
+  .more-toggle{display:flex;align-items:center;width:100%;cursor:pointer;font-size:16px;font-weight:600;color:#1d1d1f;background:transparent;border:none;border-top:1px solid #e0e0e5;padding:14px 0;user-select:none;}
+  .more-toggle .chev{margin-left:auto;color:#6e6e73;font-size:13px;transition:transform .3s ease;}
+  .more.open .more-toggle .chev{transform:rotate(180deg);}
+  .more-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease;}
+  .more.open .more-wrap{grid-template-rows:1fr;}
+  .more-wrap>.grid{overflow:hidden;min-height:0;}
   footer{text-align:center;color:#8e8e93;font-size:13px;margin-top:40px;}
   footer a{color:#0071e3;text-decoration:none;}
 </style>
@@ -36,38 +38,10 @@
   </header>
 
   <div class="grid">
-    <a class="card" href="https://apple-pc.github.io/audio-visualizer/" target="_blank" rel="noopener">
-      <div class="ico">🎵</div>
-      <div class="name">audio-visualizer</div>
-      <div class="desc">音波 · 音频可视化，把声音变成画面。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/DrapOG/" target="_blank" rel="noopener">
-      <div class="ico">🖥️</div>
-      <div class="name">DrapOG</div>
-      <div class="desc">自举式浏览器操作系统（DrapLang + DrapVM）。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/glorr/" target="_blank" rel="noopener">
-      <div class="ico">🌸</div>
-      <div class="name">glorr</div>
-      <div class="desc">Florr 式多人实时花瓣对战游戏，原创资产。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/huge_clock/" target="_blank" rel="noopener">
-      <div class="ico">⏰</div>
-      <div class="name">huge_clock</div>
-      <div class="desc">一个超大的钟，提醒你时间流逝。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/loco-simulator/" target="_blank" rel="noopener">
-      <div class="ico">🚂</div>
-      <div class="name">loco-simulator</div>
-      <div class="desc">第一人称视角 3D 电力机车模拟器（Three.js）。</div>
+    <a class="card" href="https://apple-pc.github.io/macl/" target="_blank" rel="noopener">
+      <div class="ico">🧱</div>
+      <div class="name">macl</div>
+      <div class="desc">用 Swift 写成的 macOS Minecraft 启动器（MCOM）。</div>
       <span class="tag">网站</span>
     </a>
 
@@ -85,41 +59,76 @@
       <span class="tag">网站</span>
     </a>
 
-    <a class="card" href="https://apple-pc.github.io/macl/" target="_blank" rel="noopener">
-      <div class="ico">🧱</div>
-      <div class="name">macl</div>
-      <div class="desc">用 Swift 写成的 macOS Minecraft 启动器（MCOM）。</div>
+    <a class="card" href="https://apple-pc.github.io/glorr/" target="_blank" rel="noopener">
+      <div class="ico">🌸</div>
+      <div class="name">glorr</div>
+      <div class="desc">Florr 式多人实时花瓣对战游戏，原创资产。</div>
       <span class="tag">网站</span>
     </a>
 
-    <a class="card" href="https://apple-pc.github.io/csp-template/" target="_blank" rel="noopener">
-      <div class="ico">📚</div>
-      <div class="name">csp-template</div>
-      <div class="desc">CSP-S 算法模板速查（搜索 / 折叠 / 代码高亮）。</div>
+    <a class="card" href="https://apple-pc.github.io/audio-visualizer/" target="_blank" rel="noopener">
+      <div class="ico">🎵</div>
+      <div class="name">audio-visualizer</div>
+      <div class="desc">音波 · 音频可视化，把声音变成画面。</div>
+      <span class="tag">网站</span>
+    </a>
+
+    <a class="card" href="https://apple-pc.github.io/DrapOG/" target="_blank" rel="noopener">
+      <div class="ico">🖥️</div>
+      <div class="name">DrapOG</div>
+      <div class="desc">自举式浏览器操作系统（DrapLang + DrapVM）。</div>
+      <span class="tag">网站</span>
+    </a>
+
+    <a class="card" href="https://apple-pc.github.io/huge_clock/" target="_blank" rel="noopener">
+      <div class="ico">⏰</div>
+      <div class="name">huge_clock</div>
+      <div class="desc">一个超大的钟，提醒你时间流逝。</div>
+      <span class="tag">网站</span>
+    </a>
+
+    <a class="card" href="https://apple-pc.github.io/loco-simulator/" target="_blank" rel="noopener">
+      <div class="ico">🚂</div>
+      <div class="name">loco-simulator</div>
+      <div class="desc">第一人称视角 3D 电力机车模拟器（Three.js）。</div>
       <span class="tag">网站</span>
     </a>
   </div>
 
-  <details>
-    <summary>更多</summary>
-    <div class="grid" style="margin-top:14px;">
-      <a class="card" href="https://apple-pc.github.io/pause-helper/" target="_blank" rel="noopener">
-        <div class="ico">🛑</div>
-        <div class="name">pause-helper</div>
-        <div class="desc">15 分钟延迟助手，帮你打断冲动。</div>
-        <span class="tag">网站</span>
-      </a>
+  <div class="more">
+    <button class="more-toggle" type="button" aria-expanded="false" aria-controls="more-grid">
+      <span>更多</span>
+      <span class="chev">▾</span>
+    </button>
+    <div class="more-wrap" id="more-grid">
+      <div class="grid">
+        <a class="card" href="https://apple-pc.github.io/pause-helper/" target="_blank" rel="noopener">
+          <div class="ico">🛑</div>
+          <div class="name">pause-helper</div>
+          <div class="desc">15 分钟延迟助手，帮你打断冲动。</div>
+          <span class="tag">网站</span>
+        </a>
 
-      <a class="card" href="https://github.com/apple-PC/Wos" target="_blank" rel="noopener">
-        <div class="ico">🟡</div>
-        <div class="name">Wos</div>
-        <div class="desc">波兰球游戏。</div>
-        <span class="tag code">代码仓库</span>
-      </a>
+        <a class="card" href="https://github.com/apple-PC/Wos" target="_blank" rel="noopener">
+          <div class="ico">🟡</div>
+          <div class="name">Wos</div>
+          <div class="desc">波兰球游戏。</div>
+          <span class="tag code">代码仓库</span>
+        </a>
+      </div>
     </div>
-  </details>
+  </div>
 
   <footer>源码 · <a href="https://github.com/apple-PC/home" target="_blank" rel="noopener">github.com/apple-PC/home</a></footer>
 </div>
+
+<script>
+  const more = document.querySelector('.more');
+  const toggle = document.querySelector('.more-toggle');
+  toggle.addEventListener('click', () => {
+    const open = more.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+</script>
 </body>
 </html>
