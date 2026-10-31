@@ -14,7 +14,8 @@
   .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
   a.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid #e0e0e5;border-radius:10px;padding:18px;transition:border-color .15s,box-shadow .15s;}
   a.card:hover{border-color:#0071e3;box-shadow:0 2px 8px rgba(0,0,0,.06);}
-  .ico{font-size:28px;margin-bottom:8px;}
+  .ico{margin-bottom:8px;color:#1d1d1f;}
+  .ico svg{width:40px;height:40px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
   .name{font-size:16px;font-weight:600;}
   .desc{color:#6e6e73;font-size:13px;margin-top:4px;}
   .tag{display:inline-block;margin-top:10px;font-size:11px;padding:2px 8px;border-radius:6px;background:#f0f0f3;color:#6e6e73;}
@@ -39,56 +40,139 @@
 
   <div class="grid">
     <a class="card" href="https://apple-pc.github.io/macl/" target="_blank" rel="noopener">
-      <div class="ico">🧱</div>
+      <div class="ico">
+        <svg viewBox="0 0 48 48">
+          <path d="M24 6 L38 14 L24 22 L10 14 Z" fill="#d8efd6"/>
+          <path d="M10 14 L24 22 L24 40 L10 32 Z" fill="#bfe0bb"/>
+          <path d="M38 14 L24 22 L24 40 L38 32 Z" fill="#a8d4a3"/>
+          <path d="M24 6 L24 22"/>
+          <path d="M10 14 L24 22 L38 14"/>
+          <path d="M24 22 L24 40"/>
+        </svg>
+      </div>
       <div class="name">macl</div>
       <div class="desc">用 Swift 写成的 macOS Minecraft 启动器（MCOM）。</div>
       <span class="tag">网站</span>
     </a>
 
     <a class="card" href="https://apple-pc.github.io/multi-timer/" target="_blank" rel="noopener">
-      <div class="ico">⏱️</div>
+      <div class="ico">
+        <svg viewBox="0 0 48 48">
+          <circle cx="23" cy="28" r="15" fill="#e8f0fe"/>
+          <path d="M23 28 L23 16"/>
+          <path d="M23 28 L31 32"/>
+          <circle cx="23" cy="28" r="1.8" fill="#1d1d1f" stroke="none"/>
+          <path d="M16 10 L30 10"/>
+          <path d="M23 6 L23 10"/>
+          <circle cx="23" cy="5" r="2"/>
+          <path d="M38 22 L41 22"/>
+          <circle cx="23" cy="13" r="1.4" fill="#1d1d1f" stroke="none"/>
+        </svg>
+      </div>
       <div class="name">multi-timer</div>
       <div class="desc">多功能计时器：时间 / 秒表 / 计时器。</div>
       <span class="tag">网站</span>
     </a>
 
     <a class="card" href="https://apple-pc.github.io/csps/" target="_blank" rel="noopener">
-      <div class="ico">📝</div>
+      <div class="ico">
+        <svg viewBox="0 0 48 48">
+          <rect x="6" y="9" width="36" height="30" rx="3" fill="#f0f0f3"/>
+          <path d="M6 17 L42 17"/>
+          <circle cx="12" cy="13" r="1.4"/>
+          <circle cx="17" cy="13" r="1.4"/>
+          <circle cx="22" cy="13" r="1.4"/>
+          <path d="M12 24 L20 24"/>
+          <path d="M12 29 L26 29"/>
+          <path d="M12 34 L18 34"/>
+          <path d="M32 22 L28 27 L32 32"/>
+          <path d="M36 22 L40 27 L36 32"/>
+        </svg>
+      </div>
       <div class="name">csps</div>
       <div class="desc">CSP-S 复赛模拟器（NOI Linux 风格，含 4 套模拟卷与本地评测）。</div>
       <span class="tag">网站</span>
     </a>
 
     <a class="card" href="https://apple-pc.github.io/glorr/" target="_blank" rel="noopener">
-      <div class="ico">🌸</div>
+      <div class="ico">
+        <svg viewBox="0 0 48 48">
+          <g transform="translate(24,25)" fill="#ffe3ee">
+            <ellipse cx="0" cy="-13" rx="6.5" ry="11"/>
+            <ellipse cx="0" cy="-13" rx="6.5" ry="11" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-13" rx="6.5" ry="11" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-13" rx="6.5" ry="11" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-13" rx="6.5" ry="11" transform="rotate(288)"/>
+          </g>
+          <circle cx="24" cy="25" r="5" fill="#ffd0e3"/>
+        </svg>
+      </div>
       <div class="name">glorr</div>
       <div class="desc">Florr 式多人实时花瓣对战游戏，原创资产。</div>
       <span class="tag">网站</span>
     </a>
 
-    <a class="card" href="https://apple-pc.github.io/audio-visualizer/" target="_blank" rel="noopener">
-      <div class="ico">🎵</div>
-      <div class="name">audio-visualizer</div>
-      <div class="desc">音波 · 音频可视化，把声音变成画面。</div>
-      <span class="tag">网站</span>
-    </a>
-
     <a class="card" href="https://apple-pc.github.io/DrapOG/" target="_blank" rel="noopener">
-      <div class="ico">🖥️</div>
+      <div class="ico">
+        <svg viewBox="0 0 48 48">
+          <rect x="6" y="8" width="36" height="26" rx="3" fill="#eaf2ff"/>
+          <path d="M6 15 L42 15"/>
+          <circle cx="11" cy="11.5" r="1.2"/>
+          <circle cx="15.5" cy="11.5" r="1.2"/>
+          <circle cx="20" cy="11.5" r="1.2"/>
+          <rect x="13" y="19" width="15" height="11" rx="1.5"/>
+          <path d="M13 22 L28 22"/>
+          <path d="M21 34 L27 34 L30 41 L18 41 Z" fill="#eaf2ff"/>
+          <path d="M24 41 L24 44"/>
+          <path d="M16 44 L32 44"/>
+        </svg>
+      </div>
       <div class="name">DrapOG</div>
       <div class="desc">自举式浏览器操作系统（DrapLang + DrapVM）。</div>
       <span class="tag">网站</span>
     </a>
 
+    <a class="card" href="https://apple-pc.github.io/audio-visualizer/" target="_blank" rel="noopener">
+      <div class="ico">
+        <svg viewBox="0 0 48 48">
+          <path d="M5 24 C 9 12, 12 12, 16 24 S 22 36, 26 24 S 32 12, 36 24 S 41 36, 43 24"/>
+          <circle cx="24" cy="24" r="2.5" fill="#1d1d1f" stroke="none"/>
+        </svg>
+      </div>
+      <div class="name">audio-visualizer</div>
+      <div class="desc">音波 · 音频可视化，把声音变成画面。</div>
+      <span class="tag">网站</span>
+    </a>
+
     <a class="card" href="https://apple-pc.github.io/huge_clock/" target="_blank" rel="noopener">
-      <div class="ico">⏰</div>
+      <div class="ico">
+        <svg viewBox="0 0 48 48">
+          <circle cx="24" cy="27" r="15" fill="#fff3e0"/>
+          <path d="M24 27 L24 16"/>
+          <path d="M24 27 L31 31"/>
+          <circle cx="24" cy="27" r="1.8" fill="#1d1d1f" stroke="none"/>
+          <path d="M24 12 L24 9"/>
+          <circle cx="24" cy="7" r="2"/>
+        </svg>
+      </div>
       <div class="name">huge_clock</div>
       <div class="desc">一个超大的钟，提醒你时间流逝。</div>
       <span class="tag">网站</span>
     </a>
 
     <a class="card" href="https://apple-pc.github.io/loco-simulator/" target="_blank" rel="noopener">
-      <div class="ico">🚂</div>
+      <div class="ico">
+        <svg viewBox="0 0 48 48">
+          <path d="M8 31 L8 20 L27 20 L31 14 L40 14 L40 31 Z" fill="#e3f2e1"/>
+          <rect x="32" y="16" width="6" height="6" rx="1"/>
+          <path d="M12 20 L12 14 L16 14 L16 20"/>
+          <circle cx="16" cy="35" r="4"/>
+          <circle cx="28" cy="35" r="4"/>
+          <circle cx="37" cy="35" r="3"/>
+          <path d="M5 41 L43 41"/>
+          <path d="M9 41 L11 38 M17 41 L19 38 M25 41 L27 38 M33 41 L35 38"/>
+        </svg>
+      </div>
       <div class="name">loco-simulator</div>
       <div class="desc">第一人称视角 3D 电力机车模拟器（Three.js）。</div>
       <span class="tag">网站</span>
@@ -103,14 +187,27 @@
     <div class="more-wrap" id="more-grid">
       <div class="grid">
         <a class="card" href="https://apple-pc.github.io/pause-helper/" target="_blank" rel="noopener">
-          <div class="ico">🛑</div>
+          <div class="ico">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="16" fill="#ffeede"/>
+              <path d="M19 16 L19 32"/>
+              <path d="M29 16 L29 32"/>
+            </svg>
+          </div>
           <div class="name">pause-helper</div>
           <div class="desc">15 分钟延迟助手，帮你打断冲动。</div>
           <span class="tag">网站</span>
         </a>
 
         <a class="card" href="https://github.com/apple-PC/Wos" target="_blank" rel="noopener">
-          <div class="ico">🟡</div>
+          <div class="ico">
+            <svg viewBox="0 0 48 48">
+              <circle cx="24" cy="25" r="15" fill="#fff0b3"/>
+              <circle cx="18" cy="22" r="2" fill="#1d1d1f" stroke="none"/>
+              <circle cx="30" cy="22" r="2" fill="#1d1d1f" stroke="none"/>
+              <path d="M18 30 Q 24 35 30 30"/>
+            </svg>
+          </div>
           <div class="name">Wos</div>
           <div class="desc">波兰球游戏。</div>
           <span class="tag code">代码仓库</span>
