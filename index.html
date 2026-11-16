@@ -1,267 +1,186 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>apple-PC · 导航</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>apple-PC — 为 Mac 而生的软件</title>
+<meta name="description" content="apple-PC（天天向上）出品的 macOS 软件：Macl 原生 Minecraft 启动器、ouom 专注工作与学习的原生浏览器。">
+<meta property="og:title" content="apple-PC — 为 Mac 而生的软件">
+<meta property="og:description" content="Macl 原生 Minecraft 启动器 · ouom 专注工作与学习的浏览器。">
+<meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f7;color:#1d1d1f;padding:40px 20px;line-height:1.5;}
-  .wrap{max-width:960px;margin:0 auto;}
-  header{text-align:center;margin-bottom:36px;}
-  header h1{font-size:30px;font-weight:700;}
-  header p{color:#6e6e73;margin-top:8px;font-size:15px;}
-  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));}
-  a.card{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid #e0e0e5;border-radius:10px;padding:18px;transition:border-color .15s,box-shadow .15s;}
-  a.card:hover{border-color:#0071e3;box-shadow:0 2px 8px rgba(0,0,0,.06);}
-  .ico{margin-bottom:8px;color:#1d1d1f;}
-  .ico svg{width:40px;height:40px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
-  .ico img{width:40px;height:40px;display:block;}
-  .name{font-size:16px;font-weight:600;}
-  .desc{color:#6e6e73;font-size:13px;margin-top:4px;}
-  .tag{display:inline-block;margin-top:10px;font-size:11px;padding:2px 8px;border-radius:6px;background:#f0f0f3;color:#6e6e73;}
-  .tag.code{background:#e8f0fe;color:#1a73e8;}
-  .more{margin-top:28px;}
-  .more-toggle{display:flex;align-items:center;width:100%;cursor:pointer;font-size:16px;font-weight:600;color:#1d1d1f;background:transparent;border:none;border-top:1px solid #e0e0e5;padding:14px 0;user-select:none;}
-  .more-toggle .chev{margin-left:auto;color:#6e6e73;font-size:13px;transition:transform .3s ease;}
-  .more.open .more-toggle .chev{transform:rotate(180deg);}
-  .more-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease;}
-  .more.open .more-wrap{grid-template-rows:1fr;}
-  .more-wrap>.grid{overflow:hidden;min-height:0;}
-  footer{text-align:center;color:#8e8e93;font-size:13px;margin-top:24px;}
-  footer a{color:#0071e3;text-decoration:none;}
-  .support-box{display:flex;align-items:center;gap:16px;margin-top:40px;padding:20px 22px;background:#fff;border:1px solid #ffe2c4;border-radius:14px;box-shadow:0 2px 12px rgba(255,122,0,.06);flex-wrap:wrap;}
-  .support-icon{width:44px;height:44px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;border-radius:12px;background:linear-gradient(135deg,#ffa64d,#ff6a00);color:#fff;}
-  .support-copy{flex:1 1 220px;min-width:0;}
-  .support-title{font-size:15px;font-weight:600;color:#1d1d1f;}
-  .support-desc{font-size:13px;color:#6e6e73;margin-top:3px;}
-  .support-btn{flex:0 0 auto;background:linear-gradient(135deg,#ffa64d,#ff6a00);color:#fff;padding:10px 20px;border-radius:999px;font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 2px 10px rgba(255,106,0,.28);}
-  .support-btn:active{transform:translateY(1px);}
-  @media(max-width:520px){.support-box{gap:12px;padding:16px;}.support-btn{width:100%;text-align:center;}}
+  :root{
+    --bg:#05060a; --bg2:#0a0d16; --ink:#f5f7fb; --muted:#9aa3b5;
+    --blue:#0a84ff; --blue2:#5ac8fa; --line:rgba(255,255,255,.09);
+    --card:rgba(255,255,255,.04); --r:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased; line-height:1.5; overflow-x:hidden;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ---------- 顶栏 ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(5,6,10,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:28px}
+  .brand{display:flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none;font-weight:600;font-size:16px;letter-spacing:.2px}
+  .brand img{width:26px;height:26px;display:block}
+  .nav-links{display:flex;gap:26px;margin-left:auto;align-items:center}
+  .nav-links a{color:#c8cfdb;text-decoration:none;font-size:14px;transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{color:#fff!important;background:var(--blue);padding:8px 17px;border-radius:999px;font-weight:500}
+  .nav-cta:hover{background:#3a9bff!important}
+
+  /* ---------- Hero ---------- */
+  header.hero{position:relative;text-align:center;padding:120px 0 70px;overflow:hidden}
+  .glow{position:absolute;left:50%;top:-180px;width:900px;height:520px;transform:translateX(-50%);
+    background:radial-gradient(ellipse at center,rgba(10,132,255,.28),rgba(90,200,250,.08) 42%,transparent 70%);filter:blur(20px);pointer-events:none}
+  .hero .wrap{position:relative}
+  .eyebrow{color:var(--blue2);font-size:15px;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;font-weight:600}
+  .hero h1{font-size:clamp(46px,8vw,88px);line-height:1.05;letter-spacing:-2.5px;font-weight:700;
+    background:linear-gradient(180deg,#fff 30%,#a9c6e8);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero .sub{margin-top:22px;font-size:clamp(18px,2.6vw,24px);color:#d7dee9;font-weight:500}
+  .hero .lede{max-width:640px;margin:16px auto 0;color:var(--muted);font-size:16px}
+  .hero-actions{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:600;transition:transform .2s,background .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-primary{background:var(--blue);color:#fff}
+  .btn-primary:hover{background:#3a9bff}
+  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line)}
+  .btn-ghost:hover{background:rgba(255,255,255,.14)}
+  .hero-meta{margin-top:22px;color:#6e7789;font-size:13px}
+
+  /* ---------- 产品板块 ---------- */
+  .product{padding:100px 0;border-top:1px solid var(--line)}
+  .product .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .product.reverse .copy{order:2}
+  .product.reverse .shot{order:1}
+  .badge-app{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--blue2);font-weight:600;letter-spacing:.5px;margin-bottom:18px}
+  .badge-app img{width:34px;height:34px;border-radius:9px}
+  .product h2{font-size:clamp(30px,4.5vw,46px);line-height:1.12;letter-spacing:-1.2px;font-weight:700}
+  .product .tagline{margin-top:14px;color:#b9c2d2;font-size:15px}
+  .points{list-style:none;margin-top:28px;display:grid;gap:14px}
+  .points li{display:flex;gap:12px;align-items:flex-start;color:#cdd5e2;font-size:15px}
+  .points svg{flex:0 0 auto;width:20px;height:20px;color:var(--blue);margin-top:2px}
+  .product .more{margin-top:32px;display:inline-flex;align-items:center;gap:8px;color:var(--blue2);text-decoration:none;font-weight:600;font-size:15px}
+  .product .more:hover{color:#fff}
+  .shot{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--bg2);
+    box-shadow:0 30px 80px -30px rgba(0,0,0,.9),0 0 60px -30px rgba(10,132,255,.5)}
+  .shot img{width:100%;height:100%;display:block;aspect-ratio:16/11;object-fit:cover;object-position:top left}
+
+  /* ---------- 支持 ---------- */
+  .support{padding:80px 0;border-top:1px solid var(--line)}
+  .support-card{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:20px;padding:28px 32px;
+    background:linear-gradient(135deg,rgba(255,166,77,.10),rgba(255,106,0,.04));border:1px solid rgba(255,140,50,.28);border-radius:20px;flex-wrap:wrap}
+  .support-icon{width:52px;height:52px;flex:0 0 auto;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#ffa64d,#ff6a00);color:#fff;box-shadow:0 8px 24px -8px rgba(255,106,0,.7)}
+  .support-copy{flex:1 1 260px}
+  .support-copy h3{font-size:17px;font-weight:600}
+  .support-copy p{color:var(--muted);font-size:14px;margin-top:4px}
+  .support-btn{background:linear-gradient(135deg,#ffa64d,#ff6a00);color:#fff;text-decoration:none;padding:12px 22px;border-radius:999px;font-weight:600;font-size:14px;white-space:nowrap}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 46px;color:#6e7789;font-size:13px;text-align:center}
+  footer a{color:#9aa3b5;text-decoration:none;margin:0 6px}
+  footer a:hover{color:#fff}
+
+  @media(max-width:860px){
+    .product .wrap{grid-template-columns:1fr;gap:34px}
+    .product.reverse .copy,.product.reverse .shot{order:initial}
+    header.hero{padding-top:84px}
+    .nav-links{gap:16px}
+    .nav-links a:not(.nav-cta){display:none}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <h1>apple-PC · 导航</h1>
-    <p>由apple-pc（天天向上）制作</p>
-  </header>
 
-  <div class="grid">
-    <a class="card" href="https://apple-pc.github.io/macl/" target="_blank" rel="noopener">
-      <div class="ico">
-        <img src="macl-icon.png" alt="macl">
-      </div>
-      <div class="name">macl</div>
-      <div class="desc">用 Swift 和 AppKit 从零写的 macOS Minecraft 启动器。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/multi-timer/" target="_blank" rel="noopener">
-      <div class="ico">
-        <svg viewBox="0 0 48 48">
-          <circle cx="23" cy="28" r="15" fill="#e8f0fe"/>
-          <path d="M23 28 L23 16"/>
-          <path d="M23 28 L31 32"/>
-          <circle cx="23" cy="28" r="1.8" fill="#1d1d1f" stroke="none"/>
-          <path d="M16 10 L30 10"/>
-          <path d="M23 6 L23 10"/>
-          <circle cx="23" cy="5" r="2"/>
-          <path d="M38 22 L41 22"/>
-          <circle cx="23" cy="13" r="1.4" fill="#1d1d1f" stroke="none"/>
-        </svg>
-      </div>
-      <div class="name">multi-timer</div>
-      <div class="desc">多功能计时器：时间 / 秒表 / 计时器，液态玻璃主题。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/csps/" target="_blank" rel="noopener">
-      <div class="ico">
-        <svg viewBox="0 0 48 48">
-          <rect x="6" y="9" width="36" height="30" rx="3" fill="#f0f0f3"/>
-          <path d="M6 17 L42 17"/>
-          <circle cx="12" cy="13" r="1.4"/>
-          <circle cx="17" cy="13" r="1.4"/>
-          <circle cx="22" cy="13" r="1.4"/>
-          <path d="M12 24 L20 24"/>
-          <path d="M12 29 L26 29"/>
-          <path d="M12 34 L18 34"/>
-          <path d="M32 22 L28 27 L32 32"/>
-          <path d="M36 22 L40 27 L36 32"/>
-        </svg>
-      </div>
-      <div class="name">csps</div>
-      <div class="desc">CSP-S 复赛模拟器（NOI Linux 风格，含 4 套模拟卷与本地评测）。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/glorr/" target="_blank" rel="noopener">
-      <div class="ico">
-        <svg viewBox="0 0 48 48">
-          <g transform="translate(24,25)" fill="#ffe3ee">
-            <ellipse cx="0" cy="-13" rx="6.5" ry="11"/>
-            <ellipse cx="0" cy="-13" rx="6.5" ry="11" transform="rotate(72)"/>
-            <ellipse cx="0" cy="-13" rx="6.5" ry="11" transform="rotate(144)"/>
-            <ellipse cx="0" cy="-13" rx="6.5" ry="11" transform="rotate(216)"/>
-            <ellipse cx="0" cy="-13" rx="6.5" ry="11" transform="rotate(288)"/>
-          </g>
-          <circle cx="24" cy="25" r="5" fill="#ffd0e3"/>
-        </svg>
-      </div>
-      <div class="name">glorr</div>
-      <div class="desc">Florr 式多人实时花瓣对战游戏，原创资产。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/DrapOG/" target="_blank" rel="noopener">
-      <div class="ico">
-        <svg viewBox="0 0 48 48">
-          <rect x="6" y="8" width="36" height="26" rx="3" fill="#eaf2ff"/>
-          <path d="M6 15 L42 15"/>
-          <circle cx="11" cy="11.5" r="1.2"/>
-          <circle cx="15.5" cy="11.5" r="1.2"/>
-          <circle cx="20" cy="11.5" r="1.2"/>
-          <rect x="13" y="19" width="15" height="11" rx="1.5"/>
-          <path d="M13 22 L28 22"/>
-          <path d="M21 34 L27 34 L30 41 L18 41 Z" fill="#eaf2ff"/>
-          <path d="M24 41 L24 44"/>
-          <path d="M16 44 L32 44"/>
-        </svg>
-      </div>
-      <div class="name">DrapOG</div>
-      <div class="desc">自举式浏览器操作系统（DrapLang + DrapVM）。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/audio-visualizer/" target="_blank" rel="noopener">
-      <div class="ico">
-        <svg viewBox="0 0 48 48">
-          <path d="M5 24 C 9 12, 12 12, 16 24 S 22 36, 26 24 S 32 12, 36 24 S 41 36, 43 24"/>
-          <circle cx="24" cy="24" r="2.5" fill="#1d1d1f" stroke="none"/>
-        </svg>
-      </div>
-      <div class="name">audio-visualizer</div>
-      <div class="desc">音波 · 音频可视化，把声音变成画面。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/ouom/" target="_blank" rel="noopener">
-      <div class="ico">
-        <img src="ouom-icon.png" alt="ouom">
-      </div>
-      <div class="name">ouom</div>
-      <div class="desc">为工作与学习而生的 macOS 原生浏览器（observable universe on mac）。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/huge_clock/" target="_blank" rel="noopener">
-      <div class="ico">
-        <svg viewBox="0 0 48 48">
-          <circle cx="24" cy="27" r="15" fill="#fff3e0"/>
-          <path d="M24 27 L24 16"/>
-          <path d="M24 27 L31 31"/>
-          <circle cx="24" cy="27" r="1.8" fill="#1d1d1f" stroke="none"/>
-          <path d="M24 12 L24 9"/>
-          <circle cx="24" cy="7" r="2"/>
-        </svg>
-      </div>
-      <div class="name">huge_clock</div>
-      <div class="desc">一个超大的钟，提醒你时间流逝。</div>
-      <span class="tag">网站</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/loco-simulator/" target="_blank" rel="noopener">
-      <div class="ico">
-        <svg viewBox="0 0 48 48">
-          <path d="M8 31 L8 20 L27 20 L31 14 L40 14 L40 31 Z" fill="#e3f2e1"/>
-          <rect x="32" y="16" width="6" height="6" rx="1"/>
-          <path d="M12 20 L12 14 L16 14 L16 20"/>
-          <circle cx="16" cy="35" r="4"/>
-          <circle cx="28" cy="35" r="4"/>
-          <circle cx="37" cy="35" r="3"/>
-          <path d="M5 41 L43 41"/>
-          <path d="M9 41 L11 38 M17 41 L19 38 M25 41 L27 38 M33 41 L35 38"/>
-        </svg>
-      </div>
-      <div class="name">loco-simulator</div>
-      <div class="desc">第一人称视角的 3D 电力机车驾驶模拟器（Three.js 单文件）。</div>
-      <span class="tag">网站</span>
-    </a>
-  </div>
-
-  <div class="more">
-    <button class="more-toggle" type="button" aria-expanded="false" aria-controls="more-grid">
-      <span>更多</span>
-      <span class="chev">▾</span>
-    </button>
-    <div class="more-wrap" id="more-grid">
-      <div class="grid">
-        <a class="card" href="https://apple-pc.github.io/pause-helper/" target="_blank" rel="noopener">
-          <div class="ico">
-            <svg viewBox="0 0 48 48">
-              <circle cx="24" cy="24" r="16" fill="#ffeede"/>
-              <path d="M19 16 L19 32"/>
-              <path d="M29 16 L29 32"/>
-            </svg>
-          </div>
-          <div class="name">pause-helper</div>
-          <div class="desc">15 分钟延迟助手，帮你打断冲动。</div>
-          <span class="tag">网站</span>
-        </a>
-
-        <a class="card" href="https://github.com/apple-PC/Wos" target="_blank" rel="noopener">
-          <div class="ico">
-            <svg viewBox="0 0 48 48">
-              <circle cx="24" cy="25" r="15" fill="#fff0b3"/>
-              <circle cx="18" cy="22" r="2" fill="#1d1d1f" stroke="none"/>
-              <circle cx="30" cy="22" r="2" fill="#1d1d1f" stroke="none"/>
-              <path d="M18 30 Q 24 35 30 30"/>
-            </svg>
-          </div>
-          <div class="name">Wos</div>
-          <div class="desc">波兰球游戏。</div>
-    <span class="tag code">代码仓库</span>
-    </a>
-
-    <a class="card" href="https://apple-pc.github.io/love/" target="_blank" rel="noopener">
-      <div class="ico">
-        <svg viewBox="0 0 48 48">
-          <path d="M24 39 C 9 29, 8 16, 16 12 C 21 9.5, 24 14, 24 14 C 24 14, 27 9.5, 32 12 C 40 16, 39 29, 24 39 Z"/>
-        </svg>
-      </div>
-      <div class="name">love</div>
-      <div class="desc">送给爸爸妈妈的生日祝福页面。</div>
-      <span class="tag">网站</span>
-    </a>
-      </div>
+<nav>
+  <div class="nav-inner">
+    <a class="brand" href="#top"><img src="favicon.svg" alt="apple-PC">apple-PC</a>
+    <div class="nav-links">
+      <a href="#macl">Macl</a>
+      <a href="#ouom">ouom</a>
+      <a href="#support">支持</a>
+      <a class="nav-cta" href="#products">查看作品</a>
     </div>
   </div>
+</nav>
 
-  <div class="support-box">
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <p class="eyebrow">apple-PC · 天天向上</p>
+    <h1>为 Mac 而生的软件</h1>
+    <p class="sub">专注、克制、原生。</p>
+    <p class="lede">从启动器到浏览器，坚持原生开发，把复杂留给自己，把流畅交给你的每一台 Mac。</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#products">探索作品</a>
+      <a class="btn btn-ghost" href="#support">支持开发</a>
+    </div>
+    <p class="hero-meta">Swift 原生 · 无网页套壳 · 尊重你的隐私</p>
+  </div>
+</header>
+
+<section class="product" id="products">
+  <div class="wrap" id="macl">
+    <div class="copy">
+      <span class="badge-app"><img src="https://apple-pc.github.io/macl/assets/icon.png" alt="">macOS · 游戏工具</span>
+      <h2>Macl<br>为 Mac 而生的<br>Minecraft 启动器</h2>
+      <p class="tagline">启动器不该比游戏还重。</p>
+      <ul class="points">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Swift / AppKit 原生开发，无 Electron、无网页套壳</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>完整 13 MB，解压即用，不依赖安装器</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>每个游戏实例独立匹配 Java 运行时</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>官方目录结构，整合包导入即玩，崩溃原因可追溯</li>
+      </ul>
+      <a class="more" href="https://apple-pc.github.io/macl/">了解 Macl <span>→</span></a>
+    </div>
+    <div class="shot"><img src="https://apple-pc.github.io/macl/assets/shot-overview.png" alt="Macl 实例概览"></div>
+  </div>
+</section>
+
+<section class="product reverse">
+  <div class="wrap" id="ouom">
+    <div class="copy">
+      <span class="badge-app"><img src="https://apple-pc.github.io/ouom/assets/icon.png" alt="">macOS · 浏览器</span>
+      <h2>ouom<br>把浏览器<br>还给工作与学习</h2>
+      <p class="tagline">observable universe on mac</p>
+      <ul class="points">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>原生 macOS 浏览器，多标签浏览快而克制</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>内置 AI 助手与面向学生的学习工作台</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>文档 / 表格 / 演示 / PDF 轻量办公套件</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>数据只在这台 Mac 上，离线可用</li>
+      </ul>
+      <a class="more" href="https://apple-pc.github.io/ouom/">了解 ouom <span>→</span></a>
+    </div>
+    <div class="shot"><img src="https://apple-pc.github.io/ouom/assets/newtab.jpg" alt="ouom 新标签页门户"></div>
+  </div>
+</section>
+
+<section class="support" id="support">
+  <div class="support-card">
     <div class="support-icon" aria-hidden="true">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 21s-7.5-4.6-9.5-9C1 8.6 2.6 5.5 5.7 5.5c2 0 3.3 1.1 4.3 2.4 1-1.3 2.3-2.4 4.3-2.4 3.1 0 4.7 3.1 3.2 6.5-2 4.4-9.5 9-9.5 9z"/></svg>
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.5-9C1 8.6 2.6 5.5 5.7 5.5c2 0 3.3 1.1 4.3 2.4 1-1.3 2.3-2.4 4.3-2.4 3.1 0 4.7 3.1 3.2 6.5-2 4.4-9.5 9-9.5 9z"/></svg>
     </div>
     <div class="support-copy">
-      <div class="support-title">支持 apple-PC</div>
-      <div class="support-desc">如果这些项目对你有帮助，欢迎在爱发电支持后续开发。</div>
+      <h3>支持 apple-PC</h3>
+      <p>如果这些软件对你有帮助，欢迎在爱发电支持后续开发。</p>
     </div>
-    <a class="support-btn" href="https://afdian.com/a/apple-pc" target="_blank" rel="noopener">前往爱发电主页</a>
+    <a class="support-btn" href="https://afdian.com/a/apple-pc" target="_blank" rel="noopener">前往爱发电</a>
   </div>
+</section>
 
-  <footer>源码 · <a href="https://github.com/apple-PC/home" target="_blank" rel="noopener">github.com/apple-PC/home</a></footer>
-</div>
+<footer>
+  <div class="wrap">
+    © apple-PC · 天天向上
+    <span>·</span><a href="https://github.com/apple-PC" target="_blank" rel="noopener">GitHub</a>
+    <span>·</span><a href="https://apple-pc.github.io/go/" rel="noopener">导航</a>
+  </div>
+</footer>
 
-<script>
-  const more = document.querySelector('.more');
-  const toggle = document.querySelector('.more-toggle');
-  toggle.addEventListener('click', () => {
-    const open = more.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
-</script>
-
-<script defer src="https://apple-pc.github.io/macl/afd-float.js"></script>
 </body>
 </html>
