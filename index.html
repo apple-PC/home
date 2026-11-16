@@ -5,94 +5,125 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>apple-PC — 为 Mac 而生的软件</title>
 <meta name="description" content="apple-PC（天天向上）出品的 macOS 软件：Macl 原生 Minecraft 启动器、ouom 专注工作与学习的原生浏览器。">
+<meta name="theme-color" content="#fafafa">
 <meta property="og:title" content="apple-PC — 为 Mac 而生的软件">
 <meta property="og:description" content="Macl 原生 Minecraft 启动器 · ouom 专注工作与学习的浏览器。">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <style>
   :root{
-    --bg:#05060a; --bg2:#0a0d16; --ink:#f5f7fb; --muted:#9aa3b5;
-    --blue:#0a84ff; --blue2:#5ac8fa; --line:rgba(255,255,255,.09);
-    --card:rgba(255,255,255,.04); --r:22px;
+    --bg:#fafafa; --paper:#ffffff; --ink:#1d1d1f; --ink2:#6e6e73; --ink3:#86868b;
+    --line:rgba(0,0,0,.09); --line-soft:rgba(0,0,0,.055);
+    --blue:#0a84ff; --blue-deep:#0071e3; --violet:#6c5ce7;
+    --radius:26px; --max:1120px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{
     background:var(--bg); color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC","Microsoft YaHei",sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;
     -webkit-font-smoothing:antialiased; line-height:1.5; overflow-x:hidden;
   }
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 
   /* ---------- 顶栏 ---------- */
-  nav{position:sticky;top:0;z-index:50;background:rgba(5,6,10,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
-  .nav-inner{max-width:1080px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;gap:28px}
-  .brand{display:flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none;font-weight:600;font-size:16px;letter-spacing:.2px}
-  .brand img{width:26px;height:26px;display:block}
+  nav{position:sticky;top:0;z-index:50;background:rgba(250,250,250,.78);
+    backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+    border-bottom:1px solid var(--line-soft)}
+  .nav-inner{max-width:var(--max);margin:0 auto;padding:0 22px;height:54px;display:flex;align-items:center;gap:28px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:600;font-size:16px;letter-spacing:.2px}
+  .brand img{width:27px;height:27px;display:block}
   .nav-links{display:flex;gap:26px;margin-left:auto;align-items:center}
-  .nav-links a{color:#c8cfdb;text-decoration:none;font-size:14px;transition:color .2s}
-  .nav-links a:hover{color:#fff}
-  .nav-cta{color:#fff!important;background:var(--blue);padding:8px 17px;border-radius:999px;font-weight:500}
-  .nav-cta:hover{background:#3a9bff!important}
+  .nav-links a{color:var(--ink2);font-size:13.5px;transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{color:#fff!important;background:var(--ink);padding:8px 16px;border-radius:999px;font-weight:500}
+  .nav-cta:hover{background:#3a3a3c!important}
 
   /* ---------- Hero ---------- */
-  header.hero{position:relative;text-align:center;padding:120px 0 70px;overflow:hidden}
-  .glow{position:absolute;left:50%;top:-180px;width:900px;height:520px;transform:translateX(-50%);
-    background:radial-gradient(ellipse at center,rgba(10,132,255,.28),rgba(90,200,250,.08) 42%,transparent 70%);filter:blur(20px);pointer-events:none}
-  .hero .wrap{position:relative}
-  .eyebrow{color:var(--blue2);font-size:15px;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;font-weight:600}
-  .hero h1{font-size:clamp(46px,8vw,88px);line-height:1.05;letter-spacing:-2.5px;font-weight:700;
-    background:linear-gradient(180deg,#fff 30%,#a9c6e8);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero .sub{margin-top:22px;font-size:clamp(18px,2.6vw,24px);color:#d7dee9;font-weight:500}
-  .hero .lede{max-width:640px;margin:16px auto 0;color:var(--muted);font-size:16px}
-  .hero-actions{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:600;transition:transform .2s,background .2s}
+  header.hero{position:relative;text-align:center;padding:110px 0 78px;overflow:hidden}
+  .orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;opacity:.55}
+  .orb-a{width:460px;height:460px;left:-120px;top:-120px;background:radial-gradient(circle,#bcd8ff,transparent 68%)}
+  .orb-b{width:460px;height:460px;right:-120px;top:-80px;background:radial-gradient(circle,#d8ccff,transparent 68%)}
+  .hero .wrap{position:relative;z-index:1}
+  .eyebrow{color:var(--blue-deep);font-size:14px;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:18px;font-weight:700}
+  .hero h1{font-size:clamp(44px,8vw,82px);line-height:1.06;letter-spacing:-2.5px;font-weight:700;color:var(--ink)}
+  .hero .sub{margin-top:18px;font-size:clamp(18px,2.6vw,23px);color:var(--ink2);font-weight:500}
+  .hero .lede{max-width:620px;margin:16px auto 0;color:var(--ink3);font-size:16px}
+  .hero-actions{margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 25px;border-radius:999px;font-size:15px;font-weight:600;transition:transform .2s,background .2s,box-shadow .2s}
   .btn:hover{transform:translateY(-2px)}
-  .btn-primary{background:var(--blue);color:#fff}
-  .btn-primary:hover{background:#3a9bff}
-  .btn-ghost{background:rgba(255,255,255,.08);color:#fff;border:1px solid var(--line)}
-  .btn-ghost:hover{background:rgba(255,255,255,.14)}
-  .hero-meta{margin-top:22px;color:#6e7789;font-size:13px}
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{background:#3a3a3c;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+  .btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .btn-ghost:hover{background:#f2f2f5}
+  .hero-meta{margin-top:22px;color:var(--ink3);font-size:13px}
 
-  /* ---------- 产品板块 ---------- */
-  .product{padding:100px 0;border-top:1px solid var(--line)}
-  .product .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-  .product.reverse .copy{order:2}
-  .product.reverse .shot{order:1}
-  .badge-app{display:inline-flex;align-items:center;gap:10px;font-size:13px;color:var(--blue2);font-weight:600;letter-spacing:.5px;margin-bottom:18px}
-  .badge-app img{width:34px;height:34px;border-radius:9px}
-  .product h2{font-size:clamp(30px,4.5vw,46px);line-height:1.12;letter-spacing:-1.2px;font-weight:700}
-  .product .tagline{margin-top:14px;color:#b9c2d2;font-size:15px}
-  .points{list-style:none;margin-top:28px;display:grid;gap:14px}
-  .points li{display:flex;gap:12px;align-items:flex-start;color:#cdd5e2;font-size:15px}
-  .points svg{flex:0 0 auto;width:20px;height:20px;color:var(--blue);margin-top:2px}
-  .product .more{margin-top:32px;display:inline-flex;align-items:center;gap:8px;color:var(--blue2);text-decoration:none;font-weight:600;font-size:15px}
-  .product .more:hover{color:#fff}
-  .shot{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--bg2);
-    box-shadow:0 30px 80px -30px rgba(0,0,0,.9),0 0 60px -30px rgba(10,132,255,.5)}
-  .shot img{width:100%;height:100%;display:block;aspect-ratio:16/11;object-fit:cover;object-position:top left}
+  /* ---------- 产品画廊 ---------- */
+  .gallery{padding:8px 0 90px}
+  .section-head{text-align:center;margin-bottom:40px}
+  .section-head .kicker{color:var(--blue-deep);font-size:13px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+  .section-head h2{font-size:clamp(28px,4vw,40px);letter-spacing:-1px;margin-top:10px;font-weight:700}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .pcard{position:relative;display:flex;flex-direction:column;border-radius:var(--radius);overflow:hidden;
+    border:1px solid var(--line-soft);background:var(--paper);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s}
+  .pcard:hover{transform:translateY(-6px);box-shadow:0 30px 70px -28px rgba(0,0,0,.25)}
+  .pcard-media{height:230px;position:relative;overflow:hidden;display:flex;align-items:flex-start;justify-content:center;padding-top:34px}
+  .pcard-macl .pcard-media{background:linear-gradient(160deg,#eaf2ff 0%,#d6e5ff 100%)}
+  .pcard-ouom .pcard-media{background:linear-gradient(160deg,#f0edff 0%,#ded7ff 100%)}
+  .pcard-media::after{content:"";position:absolute;inset:auto 0 0;height:60px;background:linear-gradient(to bottom,transparent,#fff);pointer-events:none}
+  .pcard-media img{width:82%;max-width:460px;border-radius:12px 12px 0 0;
+    box-shadow:0 18px 40px -14px rgba(20,30,60,.35);border:1px solid rgba(0,0,0,.08);
+    transition:transform .5s cubic-bezier(.22,1,.36,1)}
+  .pcard:hover .pcard-media img{transform:translateY(-6px) scale(1.015)}
+  .pcard-body{padding:24px 28px 28px;position:relative;flex:1;display:flex;flex-direction:column}
+  .pcard-icon{width:48px;height:48px;border-radius:13px;margin-top:-46px;position:relative;z-index:2;
+    box-shadow:0 8px 20px -8px rgba(0,0,0,.3);background:#fff;padding:3px}
+  .pcard-icon img{width:100%;height:100%;display:block;border-radius:10px}
+  .pcard h3{font-size:27px;letter-spacing:-.6px;margin-top:16px;font-weight:700}
+  .pcard .tagline{margin-top:6px;color:var(--ink2);font-size:15px;font-weight:500}
+  .pcard .desc{margin-top:14px;color:var(--ink3);font-size:14px;line-height:1.7}
+  .pcard .points{list-style:none;margin-top:18px;display:grid;gap:11px}
+  .pcard .points li{display:flex;gap:10px;align-items:flex-start;color:var(--ink2);font-size:14px}
+  .pcard .points svg{flex:0 0 auto;width:17px;height:17px;margin-top:3px}
+  .pcard-macl .points svg{color:var(--blue-deep)}
+  .pcard-ouom .points svg{color:var(--violet)}
+  .pcard .go{margin-top:auto;padding-top:24px;display:inline-flex;align-items:center;gap:7px;font-size:15px;font-weight:600}
+  .pcard-macl .go{color:var(--blue-deep)}
+  .pcard-ouom .go{color:var(--violet)}
+  .pcard .go .arrow{transition:transform .25s}
+  .pcard:hover .go .arrow{transform:translateX(4px)}
 
   /* ---------- 支持 ---------- */
-  .support{padding:80px 0;border-top:1px solid var(--line)}
-  .support-card{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:20px;padding:28px 32px;
-    background:linear-gradient(135deg,rgba(255,166,77,.10),rgba(255,106,0,.04));border:1px solid rgba(255,140,50,.28);border-radius:20px;flex-wrap:wrap}
-  .support-icon{width:52px;height:52px;flex:0 0 auto;border-radius:14px;display:flex;align-items:center;justify-content:center;
-    background:linear-gradient(135deg,#ffa64d,#ff6a00);color:#fff;box-shadow:0 8px 24px -8px rgba(255,106,0,.7)}
+  .support{padding:10px 0 90px}
+  .support-card{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:20px;padding:26px 30px;
+    background:var(--paper);border:1px solid var(--line-soft);border-radius:22px;flex-wrap:wrap;
+    box-shadow:0 18px 50px -30px rgba(0,0,0,.2)}
+  .support-icon{width:50px;height:50px;flex:0 0 auto;border-radius:15px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#ffb265,#f6821f);color:#fff;box-shadow:0 8px 20px -8px rgba(246,130,31,.6)}
   .support-copy{flex:1 1 260px}
-  .support-copy h3{font-size:17px;font-weight:600}
-  .support-copy p{color:var(--muted);font-size:14px;margin-top:4px}
-  .support-btn{background:linear-gradient(135deg,#ffa64d,#ff6a00);color:#fff;text-decoration:none;padding:12px 22px;border-radius:999px;font-weight:600;font-size:14px;white-space:nowrap}
+  .support-copy h3{font-size:17px;font-weight:650;letter-spacing:-.2px}
+  .support-copy p{color:var(--ink3);font-size:14px;margin-top:4px}
+  .support-btn{margin-left:auto;background:var(--ink);color:#fff;text-decoration:none;padding:12px 22px;border-radius:999px;
+    font-weight:600;font-size:14px;white-space:nowrap;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,background .2s}
+  .support-btn:hover{background:#3a3a3c;transform:translateY(-2px)}
+  .support-btn .heart{color:#ff9d5c}
 
-  footer{border-top:1px solid var(--line);padding:34px 0 46px;color:#6e7789;font-size:13px;text-align:center}
-  footer a{color:#9aa3b5;text-decoration:none;margin:0 6px}
-  footer a:hover{color:#fff}
+  footer{border-top:1px solid var(--line);padding:30px 0 42px;color:var(--ink3);font-size:13px;text-align:center}
+  footer a{color:var(--ink2);margin:0 6px}
+  footer a:hover{color:var(--ink)}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+  .reveal.in{opacity:1;transform:none}
 
   @media(max-width:860px){
-    .product .wrap{grid-template-columns:1fr;gap:34px}
-    .product.reverse .copy,.product.reverse .shot{order:initial}
-    header.hero{padding-top:84px}
+    .cards{grid-template-columns:1fr;gap:20px}
     .nav-links{gap:16px}
     .nav-links a:not(.nav-cta){display:none}
+    header.hero{padding-top:80px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}
   }
 </style>
 </head>
@@ -102,8 +133,7 @@
   <div class="nav-inner">
     <a class="brand" href="#top"><img src="favicon.svg" alt="apple-PC">apple-PC</a>
     <div class="nav-links">
-      <a href="#macl">Macl</a>
-      <a href="#ouom">ouom</a>
+      <a href="#products">作品</a>
       <a href="#support">支持</a>
       <a class="nav-cta" href="#products">查看作品</a>
     </div>
@@ -111,7 +141,8 @@
 </nav>
 
 <header class="hero" id="top">
-  <div class="glow"></div>
+  <div class="orb orb-a"></div>
+  <div class="orb orb-b"></div>
   <div class="wrap">
     <p class="eyebrow">apple-PC · 天天向上</p>
     <h1>为 Mac 而生的软件</h1>
@@ -125,52 +156,59 @@
   </div>
 </header>
 
-<section class="product" id="products">
-  <div class="wrap" id="macl">
-    <div class="copy">
-      <span class="badge-app"><img src="https://apple-pc.github.io/macl/assets/icon.png" alt="">macOS · 游戏工具</span>
-      <h2>Macl<br>为 Mac 而生的<br>Minecraft 启动器</h2>
-      <p class="tagline">启动器不该比游戏还重。</p>
-      <ul class="points">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Swift / AppKit 原生开发，无 Electron、无网页套壳</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>完整 13 MB，解压即用，不依赖安装器</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>每个游戏实例独立匹配 Java 运行时</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>官方目录结构，整合包导入即玩，崩溃原因可追溯</li>
-      </ul>
-      <a class="more" href="https://apple-pc.github.io/macl/">了解 Macl <span>→</span></a>
+<section class="gallery" id="products">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">我们的作品</span>
+      <h2>两款应用，一种坚持。</h2>
     </div>
-    <div class="shot"><img src="https://apple-pc.github.io/macl/assets/shot-overview.png" alt="Macl 实例概览"></div>
-  </div>
-</section>
 
-<section class="product reverse">
-  <div class="wrap" id="ouom">
-    <div class="copy">
-      <span class="badge-app"><img src="https://apple-pc.github.io/ouom/assets/icon.png" alt="">macOS · 浏览器</span>
-      <h2>ouom<br>把浏览器<br>还给工作与学习</h2>
-      <p class="tagline">observable universe on mac</p>
-      <ul class="points">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>原生 macOS 浏览器，多标签浏览快而克制</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>内置 AI 助手与面向学生的学习工作台</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>文档 / 表格 / 演示 / PDF 轻量办公套件</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>数据只在这台 Mac 上，离线可用</li>
-      </ul>
-      <a class="more" href="https://apple-pc.github.io/ouom/">了解 ouom <span>→</span></a>
+    <div class="cards">
+      <a class="pcard pcard-macl reveal" href="https://apple-pc.github.io/macl/">
+        <div class="pcard-media"><img src="https://apple-pc.github.io/macl/assets/shot-overview.png" alt="Macl 实例概览"></div>
+        <div class="pcard-body">
+          <div class="pcard-icon"><img src="https://apple-pc.github.io/macl/assets/icon.png" alt=""></div>
+          <h3>Macl</h3>
+          <p class="tagline">启动器不该比游戏还重。</p>
+          <p class="desc">为 Mac 而生的 Minecraft 启动器，Swift / AppKit 原生开发。</p>
+          <ul class="points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>无 Electron、无网页套壳，原生窗口</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>13 MB 解压即用，不依赖安装器</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>每个实例独立匹配 Java 运行时</li>
+          </ul>
+          <span class="go">了解 Macl <span class="arrow">→</span></span>
+        </div>
+      </a>
+
+      <a class="pcard pcard-ouom reveal" href="https://apple-pc.github.io/ouom/">
+        <div class="pcard-media"><img src="https://apple-pc.github.io/ouom/assets/newtab.jpg" alt="ouom 新标签页门户"></div>
+        <div class="pcard-body">
+          <div class="pcard-icon"><img src="https://apple-pc.github.io/ouom/assets/icon.png" alt=""></div>
+          <h3>ouom</h3>
+          <p class="tagline">把浏览器，还给工作与学习。</p>
+          <p class="desc">observable universe on mac，一款原生 macOS 浏览器。</p>
+          <ul class="points">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>多标签浏览快而克制，自研外壳</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>内置 AI 助手与学生学习工作台</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>数据只在这台 Mac 上，离线可用</li>
+          </ul>
+          <span class="go">了解 ouom <span class="arrow">→</span></span>
+        </div>
+      </a>
     </div>
-    <div class="shot"><img src="https://apple-pc.github.io/ouom/assets/newtab.jpg" alt="ouom 新标签页门户"></div>
   </div>
 </section>
 
 <section class="support" id="support">
-  <div class="support-card">
+  <div class="support-card reveal">
     <div class="support-icon" aria-hidden="true">
       <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.5-9C1 8.6 2.6 5.5 5.7 5.5c2 0 3.3 1.1 4.3 2.4 1-1.3 2.3-2.4 4.3-2.4 3.1 0 4.7 3.1 3.2 6.5-2 4.4-9.5 9-9.5 9z"/></svg>
     </div>
     <div class="support-copy">
-      <h3>支持 apple-PC</h3>
-      <p>如果这些软件对你有帮助，欢迎在爱发电支持后续开发。</p>
+      <h3>喜欢这些软件？</h3>
+      <p>你的支持，是它们持续更新的动力。</p>
     </div>
-    <a class="support-btn" href="https://afdian.com/a/apple-pc" target="_blank" rel="noopener">前往爱发电</a>
+    <a class="support-btn" href="https://afdian.com/a/apple-pc" target="_blank" rel="noopener"><span class="heart">♥</span> 支持 apple-PC</a>
   </div>
 </section>
 
@@ -182,5 +220,12 @@
   </div>
 </footer>
 
+<script>
+  // 滚动淡入
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
 </body>
 </html>
